@@ -17,6 +17,6 @@ public class main {
              FenetrePrincipale fenetre = new FenetrePrincipale();
              // test valentin
          });
-    } // Fin de la méthode principale 
+    } // end of the main
     
-}  // Fin du programme
+}  // end of the program

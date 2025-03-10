@@ -42,7 +42,7 @@ public class ImagePanel extends JPanel {
                 JFrame frame = new JFrame();
                 
                 ImagePanel panel = new ImagePanel(
-                "C:\\Users\\Utilisateur\\OneDrive\\Documents\\Cursus\\ENSGSI\\2AP\\TP_Informatique\\Conduction_Thermique\\img\\balsa.jpg",
+                "img/balsa.jpg",
                 widthImage,
                 heightImage);
 
