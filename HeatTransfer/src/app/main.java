@@ -15,7 +15,7 @@ public class main {
     public static void main(String[] args) {
          SwingUtilities.invokeLater(() -> {
              FenetrePrincipale fenetre = new FenetrePrincipale();
-             // test loic
+             // test valentin
          });
     } // Fin de la méthode principale 
     
