@@ -27,7 +27,7 @@ public class PModeleChaleur extends JPanel {
      * @param cardLayout CardLayout : paquet de panneaux à afficher
      * @param cardPanel  JPanel : panneau affiché sur l'écran de l'utilisateur
      */
-    public PModeleChaleur(CardLayout cardLayout, JPanel cardPanel) {
+    public PModeleChaleur(CardLayout cardLayout, JPanel cardPanel){
 
         /* Changer l'image de fond en fonction de l'OS utilisé pour éviter des décalages */
         String os = System.getProperty("os.name").toLowerCase();

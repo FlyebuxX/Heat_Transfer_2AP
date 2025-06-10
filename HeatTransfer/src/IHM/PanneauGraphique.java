@@ -204,7 +204,8 @@ public class PanneauGraphique extends JPanel {
      * @param g Graphics : composant graphique
      */
     private void dessinerGraphique(Graphics g) {
-        boolean valMinY = false;  // par défaut, ne pas afficher la graduation minimale
+        boolean valMinYExp = true;  // par défaut, afficher la graduation minimale expérimentale
+        boolean valMinYTh = true;  // par défaut, afficher la graduation minimale théorique
         int x = this.ecart;  // commencer à dessiner à partir de la marge imposée
         final double VALMAXY = this.boisExp.maxTempGlobal;  // définir la valeur maximale de l'axe des ordonnées
         double yPrecTh, ySuivTh, yPrecExp, ySuivExp;
@@ -214,11 +215,11 @@ public class PanneauGraphique extends JPanel {
             if (this.epaisseursAffichees[indiceEpaisseur]) {  // si l'épaisseur est à afficher
 
                 for (int indiceTemps=0;indiceTemps<this.nbSecondes;indiceTemps++) {
-
                     if (this.afficherTh) {  // afficher les valeurs théoriques
-                        this.graduerAxesTemperature(g, indiceEpaisseur, VALMAXY, !valMinY);  // graduer les axes pour l'épaisseur d'indice indiceEpaisseur
-                        valMinY = true;
                         
+                        this.graduerAxesTemperature(g, indiceEpaisseur, VALMAXY, valMinYTh, false);  // graduer les axes pour l'épaisseur d'indice indiceEpaisseur
+                        valMinYTh = false;
+
                         g.setColor(new Color(
                             this.boisExp.couleursEpaisseur[indiceEpaisseur].getRed(), 
                             this.boisExp.couleursEpaisseur[indiceEpaisseur].getGreen(), 
@@ -238,11 +239,9 @@ public class PanneauGraphique extends JPanel {
                         
                         g.setColor(this.boisExp.couleursEpaisseur[indiceEpaisseur]);
                         
-                        if (!this.afficherTh) {  // si les graduations théoriques ne sont pas déjà affichées
-                            this.graduerAxesTemperature(g, indiceEpaisseur, VALMAXY, !valMinY);  // graduer les axes pour l'épaisseur d'indice indiceEpaisseur
-                            valMinY = true;
-                        }
-
+                        this.graduerAxesTemperature(g, indiceEpaisseur, VALMAXY, valMinYExp, true);  // graduer les axes pour l'épaisseur d'indice indiceEpaisseur
+                        valMinYExp = false;
+                        
                         yPrecExp = this.coordsGraphiqueExp[indiceTemps][indiceEpaisseur][0];
                         ySuivExp = this.coordsGraphiqueExp[indiceTemps][indiceEpaisseur][1];
 
@@ -357,12 +356,20 @@ public class PanneauGraphique extends JPanel {
      * @param g Graphics : composant graphique
      * @param indiceEpaisseur : int indice de l'épaisseur pour laquelle il faut graduer les axes
      * @param maxY double : valeur maximale sur l'axe des ordonnées
+     * @param valEXp boolean : booléen pour savoir sur quelles valeurs on fixe les graduations de l'axe des ordonnées
      */
-    private void graduerAxesTemperature(Graphics g, int indiceEpaisseur, double maxY, boolean afficherYMin) {
+    private void graduerAxesTemperature(Graphics g, int indiceEpaisseur, 
+        double maxY, boolean afficherYMin, boolean gradExp) {
         double yMinLocal, yMaxLocal;
 
-        yMinLocal = this.boisExp.bornesTemperaturesEpaisseurs[indiceEpaisseur][0];
-        yMaxLocal = this.boisExp.bornesTemperaturesEpaisseurs[indiceEpaisseur][1];
+        if (gradExp) { // dessiner les graduations pour les valeurs expérimentales
+            yMinLocal = this.boisExp.bornesTemperaturesEpaisseurs[indiceEpaisseur][0];
+            yMaxLocal = this.boisExp.bornesTemperaturesEpaisseurs[indiceEpaisseur][1];
+        }
+        else {  // dessiner les graduations pour les valeurs théoriques
+            yMinLocal = this.boisTh.bornesTemperaturesEpaisseurs[indiceEpaisseur][0];
+            yMaxLocal = this.boisTh.bornesTemperaturesEpaisseurs[indiceEpaisseur][1];
+        }
         this.dessinerGraduationsY(g, yMinLocal, yMaxLocal, maxY, afficherYMin, true);
         this.dessinerGraduationsX(g, 0, 7200);
     }  // fin graduerAxesTemperature

@@ -141,7 +141,6 @@ public class PanneauScientifique extends JPanel {
             fenetre.afficherVue("ChaleurBois");  // interdire le redimensionnement de la fenêtre
             fenetre.setSize(1000, 700);  // rétablir la taille originale de la fenêtre
             fenetre.setLocationRelativeTo(null);
-
         });
         
         JPanel retourPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
