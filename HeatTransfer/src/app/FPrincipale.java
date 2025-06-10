@@ -62,7 +62,8 @@ public class FPrincipale extends JFrame {
     public void afficherVue(String nomVue) {
         cardLayout.show(cardPanel, nomVue);
         // Redimensionnable uniquement pour la vue graphique
-        setResizable("GraphiqueTemp".equals(nomVue));
+        setResizable(("GraphiqueTemp".equals(nomVue)));
+        setSize(1000, 700);
     }  // fin afficherVue
 
     public static void main(String[] args) {
