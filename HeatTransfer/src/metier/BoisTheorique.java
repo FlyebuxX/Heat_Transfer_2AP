@@ -12,7 +12,7 @@ import java.io.IOException;
  */
 public class BoisTheorique {
     public final String cheminFichier;
-    public double minTempGlobal;
+    public double minTempGlobal = 20;  // 293K = 20°C température minimale par défaut
     public double maxTempGlobal;
     public double[][] bornesTemperaturesEpaisseurs = new double[41][2];  // 12 épaisseurs pour deux températures extrêmes
     public double[][] temperaturesBoisGlobal;
@@ -57,7 +57,7 @@ public class BoisTheorique {
      */
     private void remplirTableauDonneesBoisTh(double[][] tab) {
         // Intialisation des constantes physiques
-        final int T0 = 293; // K on pose T0=20°C
+        final int T0 = 293; // K on pose T0=293K=20°C
         final double cteStefanBoltzmann = 0.0000000567; // W / m2 / K4
         final int hConvectifAvant = 10; // W / m2 / K
         final int hConvectifArriere = 12; // W / m2 / K
@@ -180,9 +180,9 @@ public class BoisTheorique {
                             this.minTempGlobal = temperatureCourante;
                     }
                     if (temperatureCourante > this.bornesTemperaturesEpaisseurs[iColonne][1]) {
-                        this.bornesTemperaturesEpaisseurs[iColonne][1] = (int) temperatureCourante;
+                        this.bornesTemperaturesEpaisseurs[iColonne][1] = (int) temperatureCourante - 273;
                         if (temperatureCourante > this.maxTempGlobal)  // température maximale globale
-                            this.maxTempGlobal = temperatureCourante;
+                            this.maxTempGlobal = temperatureCourante;  // conversion en °C
                     }
                 }
             }
