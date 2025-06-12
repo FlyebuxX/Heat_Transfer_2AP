@@ -22,7 +22,7 @@ public class FPrincipale extends JFrame {
      */
     public FPrincipale() {
         setTitle("VALO - Modélisation des transferts de chaleur dans le bois sec");
-        setSize(1000, 700);
+        setSize(1000, 650);
         setBackground(Color.WHITE);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -63,7 +63,7 @@ public class FPrincipale extends JFrame {
         cardLayout.show(cardPanel, nomVue);
         // Redimensionnable uniquement pour la vue graphique
         setResizable(("GraphiqueTemp".equals(nomVue)));
-        setSize(1000, 700);
+        setSize(1000, 650);
     }  // fin afficherVue
 
     public static void main(String[] args) {
