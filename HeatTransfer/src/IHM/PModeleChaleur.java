@@ -74,7 +74,7 @@ public class PModeleChaleur extends JPanel {
         String[] essences = {"Balsa", "Chêne", "Épicéa", "Mélèze", "Peuplier"};
         ButtonGroup boisGroup = new ButtonGroup();
 
-        this.imageBois = new ImagePanel("img/Balsa.jpg", 315, 315);
+        this.imageBois = new ImagePanel("img/Balsa.jpg", 240, 240);
         this.imageBois.setAlignmentX(Component.CENTER_ALIGNMENT);
         droite.add(this.imageBois);
 
@@ -93,7 +93,7 @@ public class PModeleChaleur extends JPanel {
                         .replaceAll("\\s+", "");  // traitement du nom
                 String nomFichier = "img/" + essenceChoisie + ".jpg";
 
-                ImagePanel nouvelleImage = new ImagePanel(nomFichier, 315, 315);
+                ImagePanel nouvelleImage = new ImagePanel(nomFichier, 240, 240);
                 nouvelleImage.setAlignmentX(Component.CENTER_ALIGNMENT);
                 droite.remove(imageBois);
                 imageBois = nouvelleImage;
@@ -174,7 +174,7 @@ public class PModeleChaleur extends JPanel {
         /* Section des citations */
         
         this.citationLabel = new JLabel("\"");
-        this.citationLabel.setFont(new Font("Brush Script MT", Font.ITALIC, 20));
+        this.citationLabel.setFont(new Font("Brush Script MT", Font.ITALIC, 18));
         this.citationLabel.setForeground(Color.DARK_GRAY);
         gauche.add(Box.createRigidArea(new Dimension(0, 30)));
         gauche.add(this.citationLabel);
@@ -333,7 +333,7 @@ public class PModeleChaleur extends JPanel {
         panneauBas.setLayout(new BoxLayout(panneauBas, BoxLayout.Y_AXIS));
         panneauBas.setOpaque(false);
 
-        ImagePanel logoValo = new ImagePanel("img/Logo_Valo.png", 100, 100);
+        ImagePanel logoValo = new ImagePanel("img/Logo_Valo.png", 80, 80);
         logoValo.setAlignmentX(Component.CENTER_ALIGNMENT);
         logoValo.setOpaque(false);
 
